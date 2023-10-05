@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    [SerializeField]
+    public GameObject[] targetPoints;
+    public float speed = 5.0f;
+    private int currentTargetIndex = 0;
 
-    private Transform spawnpoint;
-    public Transform[] waypoints;
-    public float moveSpeed = 10f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("Enemy instantiated.");
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < waypoints.Length; i++)
+        if (currentTargetIndex < targetPoints.Length)
         {
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[i].position, moveSpeed * Time.deltaTime);
+            Vector3 targetPosition = targetPoints[currentTargetIndex].transform.position;
+            float step = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+
+            if (Vector3.Distance(transform.position, targetPosition) < 0.001f)
+            {
+                currentTargetIndex++;
+            }
         }
     }
 }
