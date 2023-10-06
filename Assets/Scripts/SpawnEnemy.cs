@@ -8,7 +8,7 @@ public class SpawnEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -17,6 +17,7 @@ public class SpawnEnemy : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(enemyObjPrefab, transform.position, Quaternion.identity);
+            enemyObjPrefab.SetActive(true);
         }
     }
 }
