@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    EnemyStats enemyStats;
     // Start is called before the first frame update
 
-
+    [Header("Stats")]
+    [SerializeField] int health;
+    [SerializeField] int damage;
 
     void Start()
     {
@@ -17,6 +19,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void DamagePlayer()
+    {
+
     }
 }
