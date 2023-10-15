@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,25 @@ public class EnemyMove : MonoBehaviour
     public float speed = 5.0f;
     private int currentTargetIndex = 0;
 
+    private void Awake()
+    {
+        GameObject pathObject = GameObject.Find("Path");
+
+        if (pathObject != null )
+        {
+            Transform[] children = pathObject.GetComponentsInChildren<Transform>();
+
+            GameObject[] childrenArray = new GameObject[children.Length];
+
+            for (int i = 1; i < childrenArray.Length; i++) // Start vanaf 1 om de parent object "Path" over te slaan!!!!!!
+            {
+                childrenArray[i - 1] = children[i].gameObject;
+            }
+
+            targetPoints = new GameObject[childrenArray.Length - 1];
+            Array.Copy(childrenArray, targetPoints, childrenArray.Length);
+        }
+    }
     void Update()
     {
         if (currentTargetIndex < targetPoints.Length)

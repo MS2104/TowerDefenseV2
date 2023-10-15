@@ -8,8 +8,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
 
     [Header("Stats")]
-    [SerializeField] int health;
-    [SerializeField] int damage;
+    [SerializeField] public int health, damage;
 
     void Start()
     {
