@@ -24,7 +24,7 @@ public class EnemyMove : MonoBehaviour
                 childrenArray[i - 1] = children[i].gameObject;
             }
 
-            targetPoints = new GameObject[childrenArray.Length - 1];
+            targetPoints = new GameObject[childrenArray.Length];
             Array.Copy(childrenArray, targetPoints, childrenArray.Length);
         }
     }
