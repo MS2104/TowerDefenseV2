@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class MainTower : MonoBehaviour
 {
-    int health = 10;
+    // int health = 10;
 }
