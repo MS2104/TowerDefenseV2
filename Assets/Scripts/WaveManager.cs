@@ -28,7 +28,7 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemiesSpawned < currentWaveSize && Time.time >= spawnInterval && !intermissionActive)
+        if (enemiesSpawned < currentWaveSize && Time.time >= spawnInterval)
         {
             StartCoroutine(SpawnEnemy());
             spawnInterval = Time.time + spawnInterval;
@@ -42,6 +42,7 @@ public class WaveManager : MonoBehaviour
     IEnumerator SpawnEnemy()
     {
         Instantiate(enemyObj[0], spawnpoint.position, Quaternion.identity);
+        Debug.Log("Enemy spawned!");
         enemiesAlive++;
         enemiesSpawned++;
         yield return null;

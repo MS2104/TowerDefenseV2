@@ -9,6 +9,8 @@ public class EnemyMove : MonoBehaviour
     public float speed = 5.0f;
     private int currentTargetIndex = 0;
 
+    bool pathCompleted = false;
+
     private void Awake()
     {
         GameObject pathObject = GameObject.Find("Path");
@@ -26,11 +28,12 @@ public class EnemyMove : MonoBehaviour
 
             targetPoints = new GameObject[childrenArray.Length];
             Array.Copy(childrenArray, targetPoints, childrenArray.Length);
+            Array.Resize(ref targetPoints, targetPoints.Length - 1);
         }
     }
     void Update()
     {
-        if (currentTargetIndex < targetPoints.Length)
+        if (currentTargetIndex < targetPoints.Length && !pathCompleted)
         {
             Vector3 targetPosition = targetPoints[currentTargetIndex].transform.position;
             float step = speed * Time.deltaTime;
