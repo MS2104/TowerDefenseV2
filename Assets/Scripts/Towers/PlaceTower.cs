@@ -9,22 +9,12 @@ public class PlaceTower : MonoBehaviour
     bool canBuild = false;
     GameObject previewInstance;
 
-    [SerializeField]
     public GameObject towerPreview, towerObj;
 
     [SerializeField] private Tilemap gridTilemap;
-    private Vector3 gridCellSize = new Vector3(1f, 1f, 0f);
+    private Vector3 gridCellSize = new(1f, 1f, 0f);
 
     private Vector3 mousePosition;
-
-    /* Wat wij doen hier is wij maken hier een HashSet aan.
-    Een HashSet is eigenlijk een list of array maar GEEN ENKEL
-    element mag 2x voorkomen. In dit geval maak ik een occupiedPositions
-    HashSet aan waarbij ik dus aangeef op welke posities GEEN torens neer mogen
-    gezet worden. Zodra ik een toren neerzet op bijvoorbeeld 1, 1, mag er op die
-    positie GEEN nieuwe toren neergezet worden.
-    */
-    private HashSet<Vector3Int> occupiedPositions = new HashSet<Vector3Int>();
 
     void Update()
     {

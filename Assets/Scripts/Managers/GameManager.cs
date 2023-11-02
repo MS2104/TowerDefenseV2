@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        healthDisplay.SetText($"TOWER HAS {mainTower.health} HP");
+        healthDisplay.SetText($"HP: {mainTower.health}/10");
         waveDisplay.SetText($"WAVE {waveStat.currentWaveNumber}\nPROGRESS: {waveStat.enemiesSpawned}/{waveStat.currentWaveSize}");
 
         if (!gameActive)

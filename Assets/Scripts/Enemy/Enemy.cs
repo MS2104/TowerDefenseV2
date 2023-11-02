@@ -8,11 +8,10 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
 
     [Header("Stats")]
-    [SerializeField] public int health, damage;
+    public int health, damage;
 
-    [SerializeField] public int scoreValue;
+    public int scoreValue;
 
-    MainTowerV2 target;
     WaveManager waveManager;
 
     void Start()
@@ -38,10 +37,5 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    void DamagePlayer()
-    {
-
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    [SerializeField] public int currentWaveSize, enemiesSpawned, enemiesAlive;
-    [SerializeField] public int currentWaveNumber = 0;
+    public int currentWaveSize, enemiesSpawned, enemiesAlive;
+    public int currentWaveNumber = 0;
 
     float spawnInterval = 5f;
 

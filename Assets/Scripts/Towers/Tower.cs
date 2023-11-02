@@ -7,18 +7,9 @@ public class Tower : MonoBehaviour
 {
     public int level = 1;
     public int damage = 10;
+<<<<<<< Updated upstream
+=======
 
     public TextMeshProUGUI levelDisplay;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // levelDisplay.SetText(levelDisplay.text);
-    }
+>>>>>>> Stashed changes
 }
