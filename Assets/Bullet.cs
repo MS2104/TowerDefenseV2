@@ -7,6 +7,11 @@ public class Bullet : MonoBehaviour
     public int damage;
     float speed = 10f;
 
+    private void Start()
+    {
+        StartCoroutine(Countdown());
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -25,5 +30,11 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    IEnumerator Countdown()
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 }
