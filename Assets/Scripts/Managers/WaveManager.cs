@@ -8,7 +8,7 @@ public class WaveManager : MonoBehaviour
     public int currentWaveSize, enemiesSpawned, enemiesAlive;
     public int currentWaveNumber = 0;
 
-    float spawnInterval = 5f;
+    float spawnInterval = 2.5f;
 
     public Transform spawnpoint;
     public GameObject[] enemyObj;
@@ -47,7 +47,20 @@ public class WaveManager : MonoBehaviour
             {
                 waveActive = false;
                 waveStarter.SetActive(true);
+
+                UpdateWaveStats();
             }
+        }
+    }
+
+    void UpdateWaveStats()
+    {
+        currentWaveNumber++;
+        currentWaveSize += 5 * currentWaveNumber;
+
+        if (spawnInterval > 0)
+        {
+            spawnInterval -= (spawnInterval / 10);
         }
     }
 
@@ -57,6 +70,6 @@ public class WaveManager : MonoBehaviour
         Debug.Log("Enemy spawned!");
         enemiesAlive++;
         enemiesSpawned++;
-        yield return null;
+        yield return new WaitForSeconds(spawnInterval);
     }
 }

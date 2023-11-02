@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Endpoint
   - Enemy
+  - GameManager
+  - Tower
   layers:
   - Default
   - TransparentFX

@@ -7,12 +7,16 @@ public class TowerShoot : MonoBehaviour
     public float rotationSpeed = 5.0f;
 
     public GameObject bulletPrefab;
-    public float attackSpeed = 1f;
 
     Tower towerStats;
 
     bool attacking = false;
     bool hasAttacked = false;
+
+    private void Start()
+    {
+        towerStats = GetComponent<Tower>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -50,7 +54,7 @@ public class TowerShoot : MonoBehaviour
 
         Instantiate(bulletPrefab, transform.position, transform.rotation);
 
-        yield return new WaitForSeconds(attackSpeed);
+        yield return new WaitForSeconds(towerStats.attackSpeed);
         hasAttacked = false;
     }
 }

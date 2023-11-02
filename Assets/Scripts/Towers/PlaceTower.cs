@@ -16,6 +16,14 @@ public class PlaceTower : MonoBehaviour
 
     private Vector3 mousePosition;
 
+    public Cash cashScript;
+
+    private void Start()
+    {
+        GameObject gameManagerObject = GameObject.FindWithTag("GameManager");
+
+        cashScript = gameManagerObject.GetComponent<Cash>();
+    }
     void Update()
     {
         if (canBuild)
@@ -34,12 +42,20 @@ public class PlaceTower : MonoBehaviour
 
             previewInstance.transform.position = snappedPosition;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && cashScript.cash >= 10)
             {
                 canBuild = false;
                 Vector3 finalMousePos = gridTilemap.GetCellCenterWorld(cellPosition);
                 Instantiate(towerObj, finalMousePos, Quaternion.identity);
+                cashScript.cash -= 10;
                 Destroy(previewInstance);
+            }
+            else if (Input.GetMouseButtonDown(0) && cashScript.cash < 10)
+            {
+                canBuild = false;
+                Destroy(previewInstance);
+
+                Debug.Log("Not enough money");
             }
         }
     }
