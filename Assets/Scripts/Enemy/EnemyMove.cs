@@ -31,7 +31,7 @@ public class EnemyMove : MonoBehaviour
             Array.Resize(ref targetPoints, targetPoints.Length - 1);
         }
     }
-    void Update()
+    void FixedUpdate()
     {
         if (currentTargetIndex < targetPoints.Length && !pathCompleted)
         {

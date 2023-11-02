@@ -10,19 +10,23 @@ public class Enemy : MonoBehaviour
     [Header("Stats")]
     [SerializeField] public int health, damage;
 
+    [SerializeField] public int scoreValue;
+
     MainTowerV2 target;
+    WaveManager waveManager;
 
     void Start()
     {
-        
+        waveManager = FindObjectOfType<WaveManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Endpoint"))
         {
-            GameManager.mainTower.health -= damage;
             Debug.Log("Damage dealt, destroying enemyObj...");
+            GameManager.mainTower.health -= damage;
+            waveManager.enemiesAlive--;
             Destroy(gameObject);
         }
     }

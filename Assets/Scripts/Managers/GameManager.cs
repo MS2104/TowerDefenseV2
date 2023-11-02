@@ -21,13 +21,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        healthDisplay.SetText("{} HP", mainTower.health);
-        waveDisplay.SetText("Wave {}", waveStat.currentWaveNumber);
+        healthDisplay.SetText($"TOWER HAS {mainTower.health} HP");
+        waveDisplay.SetText($"WAVE {waveStat.currentWaveNumber}\nPROGRESS: {waveStat.enemiesSpawned}/{waveStat.currentWaveSize}");
 
         if (!gameActive)
         {
             Time.timeScale = 0.0f;
-
         }
     }
 }
