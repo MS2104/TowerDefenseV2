@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthDisplay;
     [SerializeField] TextMeshProUGUI waveDisplay;
 
-    void Awake() // "erm invalid token void in class" dawg who gives a fuck
+    void Awake()
     {
         mainTower = FindObjectOfType<MainTowerV2>();
         waveStat = FindObjectOfType<WaveManager>();
@@ -24,8 +24,9 @@ public class GameManager : MonoBehaviour
         healthDisplay.SetText($"HP: {mainTower.health}/10");
         waveDisplay.SetText($"WAVE {waveStat.currentWaveNumber}\nPROGRESS: {waveStat.enemiesSpawned}/{waveStat.currentWaveSize}");
 
-        if (!gameActive)
+        if (gameActive && mainTower.health == 0)
         {
+            gameActive = false;
             Time.timeScale = 0.0f;
         }
     }

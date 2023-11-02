@@ -27,6 +27,12 @@ public class WaveManager : MonoBehaviour
         Debug.Log($"Wave {currentWaveNumber} started. Wave size: {currentWaveSize}.");
     }
 
+    public void StartWave()
+    {
+        waveActive = true;
+        waveStarter.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {

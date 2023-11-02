@@ -46,15 +46,10 @@ public class TowerShoot : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        //GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        //Bullet bulletComponent = bullet.GetComponent<Bullet>();
-
-        //if (bulletComponent != null)
-        //{
-        //    bulletComponent.damage = towerStats.damage;
-        //}
-
         hasAttacked = true;
+
+        Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
         yield return new WaitForSeconds(attackSpeed);
         hasAttacked = false;
     }
