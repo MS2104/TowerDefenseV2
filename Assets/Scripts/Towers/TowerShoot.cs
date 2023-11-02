@@ -48,7 +48,7 @@ public class TowerShoot : MonoBehaviour
     {
         hasAttacked = true;
 
-        Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Instantiate(bulletPrefab, transform.position, transform.rotation);
 
         yield return new WaitForSeconds(attackSpeed);
         hasAttacked = false;
