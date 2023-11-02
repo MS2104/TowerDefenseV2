@@ -12,7 +12,7 @@ public class Tower : MonoBehaviour
 
     private new CircleCollider2D collider2D;
 
-    public GameObject upgradedTowerObj;
+    // public GameObject upgradedTowerObj;
     public Cash cashScript;
 
     private void Start()
@@ -23,16 +23,5 @@ public class Tower : MonoBehaviour
 
         cashScript = gameManagerObject.GetComponent<Cash>();
 
-    }
-
-
-    public void UpgradeTower()
-    {
-        if (upgradedTowerObj != null && level < 4)
-        {
-            cashScript.cash -= (500 * (level *= 2));
-            Instantiate(upgradedTowerObj, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
     }
 }
